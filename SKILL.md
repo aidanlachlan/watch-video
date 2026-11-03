@@ -56,11 +56,11 @@ Manual subtitles almost always pass. If auto-captions show two or more of these 
 yt-dlp --no-cookies --no-cookies-from-browser -x --audio-format wav \
   -o "videos/%(extractor_key)s-%(id)s/audio.%(ext)s" "<URL>"
 ffmpeg -y -i videos/<id>/audio.wav -ar 16000 -ac 1 -c:a pcm_s16le videos/<id>/audio16k.wav
-whisper-cli -m models/ggml-small.en.bin -f videos/<id>/audio16k.wav \
+whisper-cli -m ~/src/whisper.cpp/models/ggml-small.en.bin -f videos/<id>/audio16k.wav \
   -otxt -of videos/<id>/whisper
 ```
 
-If `models/ggml-small.en.bin` is missing, tell the user and ask before downloading it (about 488 MB). Convert the whisper output into `transcript.md` with `[mm:ss]` timestamps.
+If `~/src/whisper.cpp/models/ggml-small.en.bin` is missing, tell the user and ask before downloading it (about 488 MB). Convert the whisper output into `transcript.md` with `[mm:ss]` timestamps.
 
 ### 4. Frames (if the user asks for visuals, or the transcript is under about 30 words)
 
